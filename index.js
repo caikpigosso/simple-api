@@ -14,7 +14,7 @@ let sessionCfg;
 if (fs.existsSync(SESSION_FILE_PATH)) {
     sessionCfg = require(SESSION_FILE_PATH);
 }
-const client = new Client({ puppeteer: { headless: true }, session: sessionCfg });
+const client = new Client({ puppeteer: { headless: true },args: ['--no-sandbox', '--disable-setuid-sandbox'], session: sessionCfg });
 client.initialize();
 client.on('qr', (qr) => {
     // NOTE: This event will not be fired if a session is specified.
